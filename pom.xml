@@ -8,5 +8,51 @@
     <artifactId>FirstBlood</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <extra_jvm>-javaagent:</extra_jvm>
+    </properties>
 
+
+
+    <dependencies>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-core</artifactId>
+            <version>0.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>comsat-httpclient</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <!--<id>make-assembly</id>-->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extraJvmArguments>${extra_jvm}</extraJvmArguments>
+                    <programs>
+                        <program>
+                            <mainClass>com.jimmy.quasar.QuasarTest</mainClass>
+                            <name>start_exchange_bid_service.sh</name>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
