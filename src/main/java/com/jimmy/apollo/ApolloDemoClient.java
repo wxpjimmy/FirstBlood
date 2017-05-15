@@ -93,6 +93,8 @@ public class ApolloDemoClient {
                 continue;
             }
             input = input.trim();
+            logger.debug("Input: {}", input);
+            logger.debug("This is a debug message for testing log level change!!!");
             if (input.equalsIgnoreCase("application")) {
                 apolloConfigDemo.print("application");
                 continue;
